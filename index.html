@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotlight 11 | Module 2c: Relative Clauses Interactive Worksheet</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --error: #dc2626;
+      --error-bg: #fee2e2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px 14px 50px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #ffffff;
+      padding: 24px 28px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+    }
+
+    header .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 1.55rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.92;
+    }
+
+    .student-bar {
+      background: var(--card);
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .student-bar input {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .student-bar input:focus {
+      border-color: var(--primary);
+    }
+
+    .instructions {
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin-bottom: 22px;
+      font-size: 0.93rem;
+    }
+
+    .instructions strong {
+      color: #1e40af;
+    }
+
+    .question-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.2s;
+    }
+
+    .sentence {
+      font-size: 1.06rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .q-num {
+      display: inline-block;
+      background: #e2e8f0;
+      color: #334155;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      text-align: center;
+      line-height: 26px;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      margin-right: 8px;
+    }
+
+    select {
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border: 2px solid #94a3b8;
+      border-radius: 7px;
+      background-color: #f8fafc;
+      color: var(--text);
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    select:focus {
+      border-color: var(--primary);
+      background-color: #ffffff;
+    }
+
+    select.pronoun-select {
+      margin: 0 4px;
+      min-width: 145px;
+      color: #1e3a8a;
+    }
+
+    .meta-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed #e2e8f0;
+      align-items: center;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    select.correct {
+      border-color: var(--success) !important;
+      background-color: var(--success-bg) !important;
+      color: #14532d !important;
+    }
+
+    select.incorrect {
+      border-color: var(--error) !important;
+      background-color: var(--error-bg) !important;
+      color: #7f1d1d !important;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      padding: 8px 12px;
+      border-radius: 7px;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.ok {
+      background: var(--success-bg);
+      color: #14532d;
+    }
+
+    .feedback.bad {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+      justify-content: center;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.1s, background-color 0.2s;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .btn-check {
+      background-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-check:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-reset {
+      background-color: #e2e8f0;
+      color: #334155;
+    }
+
+    .btn-reset:hover {
+      background-color: #cbd5e1;
+    }
+
+    .score-panel {
+      display: none;
+      margin-top: 24px;
+      background: var(--card);
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .score-panel.show {
+      display: block;
+    }
+
+    .score-big {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 4px 0;
+    }
+
+    .grade-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .meta-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      select.pronoun-select {
+        width: 100%;
+        margin: 6px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">SPOTLIGHT 11 • MODULE 2C</div>
+    <h1>Relative Clauses: Interactive Progress Test</h1>
+    <p>Defining &amp; Non-defining Clauses • Punctuation • Pronoun Omission (30 points)</p>
+  </header>
+
+  <div class="student-bar">
+    <div>
+      <label for="studentName"><strong>Student Name:</strong></label>
+      <input type="text" id="studentName" placeholder="Enter your name..." />
+    </div>
+    <div>
+      <label for="studentClass"><strong>Class:</strong></label>
+      <input type="text" id="studentClass" value="11" style="width: 70px;" />
+    </div>
+  </div>
+
+  <div class="instructions">
+    <strong>Task Instructions (3 points per item):</strong><br>
+    1. Choose the correct <strong>relative pronoun / adverb</strong> from the dropdown list.<br>
+    2. Decide if <strong>Commas</strong> are needed (<em>Yes</em> for Non-defining clauses / <em>No</em> for Defining clauses).<br>
+    3. Decide if you <strong>Can omit the pronoun</strong> without changing the meaning (<em>Yes</em> / <em>No</em>).
+  </div>
+
+  <div id="quiz-container"></div>
+
+  <div class="actions">
+    <button class="btn-check" onclick="checkAnswers()">Check My Answers</button>
+    <button class="btn-reset" onclick="resetQuiz()">Reset Worksheet</button>
+  </div>
+
+  <div class="score-panel" id="scorePanel">
+    <div>Your Final Result:</div>
+    <div class="score-big" id="scoreValue">0 / 30</div>
+    <div id="gradeText" class="grade-badge"></div>
+  </div>
+</div>
+
+<script>
+  const pronounOptions = [
+    "— choose —",
+    "who",
+    "whom",
+    "which",
+    "that",
+    "who / that",
+    "which / that",
+    "who / whom / that",
+    "whose",
+    "where",
+    "when",
+    "why"
+  ];
+
+  const questions = [
+    {
+      id: 1,
+      part1: "The smartphone",
+      part2: "I bought last week takes amazing photos.",
+      validPronouns: ["which / that", "which", "that"],
+      commas: "No",
+      omit: "Yes",
+      sentenceWithCommas: "The smartphone which / that I bought last week takes amazing photos.",
+      explanation: "Pronoun: which / that | Commas: No (Defining) | Omit: Yes (союз выступает в роли дополнения перед подлежащим 'I')."
+    },
+    {
+      id: 2,
+      part1: "My mother",
+      part2: "is a doctor works at the local hospital.",
+      validPronouns: ["who"],
+      commas: "Yes",
+      omit: "No",
+      sentenceWithCommas: "My mother, who is a doctor, works at the local hospital.",
+      explanation: "Pronoun: who ('that' запрещено!) | Commas: Yes (Non-defining — мама одна, нужна дополнительная справка) | Omit: No."
+    },
+    {
+      id: 3,
+      part1: "A person",
+      part2: "speaks three foreign languages can easily find a good job.",
+      validPronouns: ["who / that", "who", "that"],
+      commas: "No",
+      omit: "No",
+      sentenceWithCommas: "A person who / that speaks three foreign languages can easily find a good job.",
+      explanation: "Pronoun: who / that | Commas: No (Defining) | Omit: No (союз является подлежащим перед глаголом 'speaks')."
+    },
+    {
+      id: 4,
+      part1: "William Shakespeare",
+      part2: "plays are famous all over the world was born in Stratford-upon-Avon.",
+      validPronouns: ["whose"],
+      commas: "Yes",
+      omit: "No",
+      sentenceWithCommas: "William Shakespeare, whose plays are famous all over the world, was born in Stratford-upon-Avon.",
+      explanation: "Pronoun: whose (принадлежность) | Commas: Yes (Non-defining — имя собственное) | Omit: No ('whose' не опускается)."
+    },
+    {
+      id: 5,
+      part1: "The girl to",
+      part2: "Tom sent the message didn't reply until the next morning.",
+      validPronouns: ["whom"],
+      commas: "No",
+      omit: "No",
+      sentenceWithCommas: "The girl to whom Tom sent the message didn't reply until the next morning.",
+      explanation: "Pronoun: whom (после предлога 'to' для людей используется только 'whom') | Commas: No | Omit: No (после предлога опускать нельзя)."
+    },
+    {
+      id: 6,
+      part1: "The café",
+      part2: "we usually have lunch is closed for repairs today.",
+      validPronouns: ["where"],
+      commas: "No",
+      omit: "No",
+      sentenceWithCommas: "The café where we usually have lunch is closed for repairs today.",
+      explanation: "Pronoun: where (место) | Commas: No (Defining) | Omit: No (наречие 'where' не опускается)."
+    },
+    {
+      id: 7,
+      part1: "Moscow",
+      part2: "is the capital of Russia has a very rich history.",
+      validPronouns: ["which"],
+      commas: "Yes",
+      omit: "No",
+      sentenceWithCommas: "Moscow, which is the capital of Russia, has a very rich history.",
+      explanation: "Pronoun: which ('that' запрещено!) | Commas: Yes (Non-defining — имя собственное) | Omit: No."
+    },
+    {
+      id: 8,
+      part1: "The boy",
+      part2: "you saw at the bus stop yesterday is my cousin.",
+      validPronouns: ["who / whom / that", "who / that", "who", "whom", "that"],
+      commas: "No",
+      omit: "Yes",
+      sentenceWithCommas: "The boy who / whom / that you saw at the bus stop yesterday is my cousin.",
+      explanation: "Pronoun: who / whom / that | Commas: No (Defining) | Omit: Yes (союз является дополнением перед подлежащим 'you')."
+    },
+    {
+      id: 9,
+      part1: "I will never forget the day",
+      part2: "I won my first gold medal.",
+      validPronouns: ["when"],
+      commas: "No",
+      omit: "No",
+      sentenceWithCommas: "I will never forget the day when I won my first gold medal.",
+      explanation: "Pronoun: when (время) | Commas: No (Defining) | Omit: No."
+    },
+    {
+      id: 10,
+      part1: "Do you know the reason",
+      part2: "Anna left the party so early?",
+      validPronouns: ["why"],
+      commas: "No",
+      omit: "No",
+      sentenceWithCommas: "Do you know the reason why Anna left the party so early?",
+      explanation: "Pronoun: why (причина после 'the reason') | Commas: No (Defining) | Omit: No."
+    }
+  ];
+
+  function renderQuiz() {
+    const container = document.getElementById("quiz-container");
+    container.innerHTML = "";
+
+    questions.forEach((q) => {
+      const optionsHTML = pronounOptions
+        .map((opt, idx) => `<option value="${idx === 0 ? '' : opt}">${opt}</option>`)
+        .join("");
+
+      const card = document.createElement("div");
+      card.className = "question-card";
+      card.id = `card-${q.id}`;
+      card.innerHTML = `
+        <div class="sentence">
+          <span class="q-num">${q.id}</span>
+          ${q.part1}
+          <select id="pronoun-${q.id}" class="pronoun-select" aria-label="Relative pronoun for item ${q.id}">
+            ${optionsHTML}
+          </select>
+          ${q.part2}
+        </div>
+        <div class="meta-controls">
+          <div class="control-group">
+            <label for="commas-${q.id}">Commas needed:</label>
+            <select id="commas-${q.id}">
+              <option value="">— select —</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="omit-${q.id}">Can omit pronoun:</label>
+            <select id="omit-${q.id}">
+              <option value="">— select —</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback" id="feedback-${q.id}"></div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function checkAnswers() {
+    let totalScore = 0;
+
+    questions.forEach((q) => {
+      const pEl = document.getElementById(`pronoun-${q.id}`);
+      const cEl = document.getElementById(`commas-${q.id}`);
+      const oEl = document.getElementById(`omit-${q.id}`);
+      const fbEl = document.getElementById(`feedback-${q.id}`);
+
+      const pVal = pEl.value;
+      const cVal = cEl.value;
+      const oVal = oEl.value;
+
+      let itemPoints = 0;
+
+      // Check pronoun
+      if (q.validPronouns.includes(pVal)) {
+        pEl.className = "pronoun-select correct";
+        itemPoints++;
+      } else {
+        pEl.className = "pronoun-select incorrect";
+      }
+
+      // Check commas
+      if (cVal === q.commas) {
+        cEl.className = "correct";
+        itemPoints++;
+      } else {
+        cEl.className = "incorrect";
+      }
+
+      // Check omission
+      if (oVal === q.omit) {
+        oEl.className = "correct";
+        itemPoints++;
+      } else {
+        oEl.className = "incorrect";
+      }
+
+      totalScore += itemPoints;
+
+      fbEl.classList.add("show");
+      if (itemPoints === 3) {
+        fbEl.className = "feedback show ok";
+        fbEl.innerHTML = `✅ <strong>3/3 points!</strong> Full sentence: <em>${q.sentenceWithCommas}</em>`;
+      } else {
+        fbEl.className = "feedback show bad";
+        fbEl.innerHTML = `❌ <strong>${itemPoints}/3 points.</strong> ${q.explanation}<br>Correct punctuation: <em>${q.sentenceWithCommas}</em>`;
+      }
+    });
+
+    const panel = document.getElementById("scorePanel");
+    const scoreValue = document.getElementById("scoreValue");
+    const gradeText = document.getElementById("gradeText");
+
+    scoreValue.textContent = `${totalScore} / 30`;
+    panel.classList.add("show");
+
+    if (totalScore >= 27) {
+      gradeText.textContent = "Mark: 5 (Excellent!)";
+      gradeText.style.background = "#dcfce7";
+      gradeText.style.color = "#14532d";
+    } else if (totalScore >= 21) {
+      gradeText.textContent = "Mark: 4 (Good job!)";
+      gradeText.style.background = "#dbeafe";
+      gradeText.style.color = "#1e40af";
+    } else if (totalScore >= 15) {
+      gradeText.textContent = "Mark: 3 (Satisfactory — review the rules)";
+      gradeText.style.background = "#fef3c7";
+      gradeText.style.color = "#92400e";
+    } else {
+      gradeText.textContent = "Mark: 2 (Needs more practice)";
+      gradeText.style.background = "#fee2e2";
+      gradeText.style.color = "#991b1b";
+    }
+
+    panel.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function resetQuiz() {
+    renderQuiz();
+    const panel = document.getElementById("scorePanel");
+    panel.classList.remove("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>
